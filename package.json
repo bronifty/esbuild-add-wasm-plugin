@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild app.jsx --bundle --outfile=out.js"
+    "build": "esbuild app.jsx --bundle --outfile=out.js",
+    "builder": "bun run builder.mjs"
   },
   "keywords": [],
   "author": "",

@@ -60,12 +60,19 @@ const importObject = {
   }
 };
 
-async function runWasm() {
-  const response = await fetch('simple.wasm');
-  const buffer = await response.arrayBuffer();
-  const binary = new Uint8Array(buffer);
-  const result = await WebAssembly.instantiate(binary, importObject);
-  result.instance.exports.exported_func();
+function runWasm() {
+  fetch('simple.wasm')
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+      const binary = new Uint8Array(buffer);
+      return WebAssembly.instantiate(binary, importObject);
+    })
+    .then(result => {
+      result.instance.exports.exported_func();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
 runWasm();

@@ -46,7 +46,7 @@
 import { createBundle } from './bundling';
 
 async function build() {
-  const bundle = await createBundle('app.js', 'out.js');
+  const bundle = createBundle('app.js', 'out.js');
 
   console.log(bundle.entrypointPath);
   console.log(bundle.directory);
